@@ -1,0 +1,3 @@
+rootProject.name = "multimedia"
+include ':sample'
+include ':multimedia'
