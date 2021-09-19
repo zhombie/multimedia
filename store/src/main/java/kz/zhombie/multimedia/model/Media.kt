@@ -6,7 +6,7 @@ open class Media internal constructor(
     override val id: Long,
     override val uri: Uri,
     override val title: String?,
-    override val displayName: String,
+    override val displayName: String?,
     override val folder: Folder?,
     override val history: History?,
     override val properties: Properties?,
@@ -24,7 +24,7 @@ open class Media internal constructor(
 
     interface Playable {
         companion object {
-            const val UNDEFINED = -1L
+            const val UNDEFINED_DURATION = -1L
         }
 
         /**
@@ -33,7 +33,7 @@ open class Media internal constructor(
         val duration: Long
 
         fun hasUndefinedDuration(): Boolean {
-            return duration == UNDEFINED
+            return duration == UNDEFINED_DURATION
         }
     }
 

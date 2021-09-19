@@ -6,7 +6,7 @@ data class Video constructor(
     override val id: Long,
     override val uri: Uri,
     override val title: String?,
-    override val displayName: String,
+    override val displayName: String?,
     override val folder: Folder?,
     override val history: History?,
     override val duration: Long,
@@ -35,7 +35,7 @@ data class Video constructor(
         displayName = displayName,
         folder = null,
         history = null,
-        duration = Playable.UNDEFINED,
+        duration = Playable.UNDEFINED_DURATION,
         resolution = null,
         properties = null,
         localFile = localFile

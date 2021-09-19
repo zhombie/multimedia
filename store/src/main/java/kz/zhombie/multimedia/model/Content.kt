@@ -17,7 +17,7 @@ open class Content constructor(
     open val id: Long,
     open val uri: Uri,
     open val title: String?,
-    open val displayName: String,
+    open val displayName: String?,
     open val folder: Folder?,
     open val history: History?,
     open val properties: Properties?,
@@ -30,8 +30,14 @@ open class Content constructor(
         }
     }
 
-    val label: String
-        get() = if (title.isNullOrBlank()) displayName else displayName
+    val label: String?
+        get() = if (!title.isNullOrBlank()) {
+            title
+        } else if (!displayName.isNullOrBlank()) {
+            displayName
+        } else {
+            null
+        }
 
     data class LocalFile constructor(
         val uri: Uri
@@ -54,7 +60,12 @@ open class Content constructor(
         val addedAt: Long? = null,
         val modifiedAt: Long? = null,
         val createdAt: Long? = null,
-    )
+    ) {
+
+        fun isEmpty(): Boolean {
+            return addedAt == null && modifiedAt == null && createdAt == null
+        }
+    }
 
     data class Properties constructor(
         val size: Long,
@@ -62,9 +73,12 @@ open class Content constructor(
     ) {
 
         companion object {
-            const val UNDEFINED_SIZE = -1
+            const val UNDEFINED_SIZE = -1L
         }
 
+        fun hasUndefinedSize(): Boolean {
+            return size == UNDEFINED_SIZE
+        }
     }
 
     override fun toString(): String {

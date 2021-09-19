@@ -6,7 +6,7 @@ data class Audio constructor(
     override val id: Long,
     override val uri: Uri,
     override val title: String?,
-    override val displayName: String,
+    override val displayName: String?,
     override val folder: Folder?,
     override val history: History?,
     override val duration: Long,
