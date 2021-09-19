@@ -20,6 +20,7 @@ open class Content constructor(
     open val displayName: String,
     open val folder: Folder?,
     open val history: History?,
+    open val properties: Properties?,
     open val localFile: LocalFile?
 ) {
 
@@ -55,8 +56,19 @@ open class Content constructor(
         val createdAt: Long? = null,
     )
 
+    data class Properties constructor(
+        val size: Long,
+        val mimeType: String? = null,
+    ) {
+
+        companion object {
+            const val UNDEFINED_SIZE = -1
+        }
+
+    }
+
     override fun toString(): String {
-        return "${Content::class.java.simpleName}(id=$id, uri=$uri, title=$title, displayName=$displayName, folder=$folder, history=$history, localFile=$localFile)"
+        return "${Content::class.java.simpleName}(id=$id, uri=$uri, title=$title, displayName=$displayName, folder=$folder, history=$history, properties=$properties, localFile=$localFile)"
     }
 
 }

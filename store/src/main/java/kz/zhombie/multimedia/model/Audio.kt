@@ -10,6 +10,7 @@ data class Audio constructor(
     override val folder: Folder?,
     override val history: History?,
     override val duration: Long,
+    override val properties: Properties?,
     val album: Album?,
     override val localFile: LocalFile?
 ) : Media(
@@ -19,6 +20,7 @@ data class Audio constructor(
     displayName = displayName,
     folder = folder,
     history = history,
+    properties = properties,
     localFile = localFile,
 ), Media.Playable {
 

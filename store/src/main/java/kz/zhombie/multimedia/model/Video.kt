@@ -11,6 +11,7 @@ data class Video constructor(
     override val history: History?,
     override val duration: Long,
     override val resolution: Resolution?,
+    override val properties: Properties?,
     override val localFile: LocalFile?
 ) : Media(
     id = id,
@@ -19,6 +20,7 @@ data class Video constructor(
     displayName = displayName,
     folder = folder,
     history = history,
+    properties = properties,
     localFile = localFile
 ), Media.Playable, Media.Visual {
 
@@ -35,6 +37,7 @@ data class Video constructor(
         history = null,
         duration = Playable.UNDEFINED,
         resolution = null,
+        properties = null,
         localFile = localFile
     )
 

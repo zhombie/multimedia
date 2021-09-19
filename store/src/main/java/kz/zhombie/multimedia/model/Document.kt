@@ -9,6 +9,7 @@ data class Document constructor(
     override val displayName: String,
     override val folder: Folder?,
     override val history: History?,
+    override val properties: Properties?,
     override val localFile: LocalFile?
 ) : Content(
     id = id,
@@ -17,5 +18,6 @@ data class Document constructor(
     displayName = displayName,
     folder = folder,
     history = history,
+    properties = properties,
     localFile = localFile
 )
